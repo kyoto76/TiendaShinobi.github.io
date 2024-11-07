@@ -37,7 +37,7 @@ text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .icons i {
@@ -57,7 +57,7 @@ text-align: center;
 }
 
 .product-txt {
-    flex-basis: 50%;
+    flex-basis: 45%;
 
 }
 
@@ -98,5 +98,5 @@ text-align: center;
     border-radius: 25px;
     color: rgb(255, 255, 255);
     text-decoration: none;
-    margin-top: 50px;
+    margin-top: 20px;
 }

@@ -10,6 +10,11 @@
     --color-texto: #2c3e50;
 }
 
+/* General box sizing */
+* {
+    box-sizing: border-box;
+}
+
 /* Body styling */
 body {
     font-family: 'Poppins', sans-serif;
@@ -66,7 +71,7 @@ nav ul li a:hover {
     overflow: hidden;
     width: 100%;
     max-width: 1500px; /* Ajusta el ancho máximo según sea necesario */
-    height: 300px; /* Ajusta la altura del carrusel */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
     margin: 0 auto;
 }
 
@@ -83,7 +88,7 @@ nav ul li a:hover {
 
 .carousel-slide img {
     width: 100%;
-    height: 100%; /* Ajusta la altura de las imágenes para que coincida con el carrusel */
+    height: auto; /* Mantiene la proporción de la imagen */
     border-radius: 8px;
     flex-shrink: 0;
 }
@@ -117,32 +122,17 @@ nav ul li a:hover {
 }
 
 /* Content styling */
-
 .contenido {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: center; /* Centra el contenido */
     max-width: 1200px;
     margin: 20px auto;
-    justify-content: center;
-   
-
 }
 
-
-
-.izquierda {
-    flex: 1;
-    padding: 5px;
-   position: relative;
-}
-
-
-.derecha {
-    flex: 1;
+.izquierda, .derecha {
+    flex: 1 1 calc(50% - 20px); /* Ajusta el ancho en pantallas más grandes */
     padding: 10px;
-    justify-content: center;
-    
-
 }
 
 .derecha img {
@@ -151,7 +141,6 @@ nav ul li a:hover {
     max-height: 400px;
     justify-content: center;
     position: relative;
-
 }
 
 h1 {
@@ -210,9 +199,8 @@ h2 {
     margin: 0 10px;
     text-decoration: none;
     margin-bottom: 5%;
+    transition: all 0.3s ease;
 }
-
-
 
 .categoria:hover {
     background-color: var(--color-accento);
@@ -223,12 +211,11 @@ h2 {
 #productos {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Centra los productos */
 }
 
 .producto {
-    width: calc(33.33% - 20px);
+    flex: 1 1 calc(33.33% - 20px); /* Permite que los productos se ajusten */
     margin: 10px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -239,8 +226,6 @@ h2 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     background-color: #fff;
-
-
 }
 
 .producto:hover {
@@ -265,33 +250,16 @@ h2 {
     color: var(--color-texto);
 }
 
-
-
-.seccion {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 20px auto;
-}
-
-.izquierda {
-    flex: 1;
-    padding: 20px;
-}
-
+/* Media Query para pantallas pequeñas */
 @media (max-width: 768px) {
-.derecha {
-    flex: 1;
-    padding: 10px;
-    width: 80%; /* Adjust width to 80% */        
-margin: 10px auto; /* Center the cards */
-}
-}
+    .producto {
+        flex: 1 1 100%; /* Los productos ocuparán el 100% del ancho en pantallas pequeñas */
+    }
 
-p {
-    color: var(--color-texto);
+    .izquierda, .derecha {
+        flex: 1 1 100%; /* Los elementos ocuparán el 100% del ancho en pantallas pequeñas */
+    }
 }
-
 
 /* Botón de WhatsApp */
 .whatsapp-button {
@@ -314,7 +282,6 @@ p {
     width: 30px; /* Ajusta el tamaño del ícono */
     height: 30px;
 }
-
 
 /* Botón para ir arriba */
 #top-button {
@@ -340,7 +307,6 @@ p {
     height: 24px;
 }
 
-
 /* Footer styling */
 footer {
     background-color: var(--color-primario);
@@ -357,8 +323,8 @@ footer .logo-2 {
 }
 
 footer .links {
-    display: inline-block;
-    margin: 0 20px;
+    flex-direction: column; /* Cambia a columna para pantallas pequeñas */
+    align-items: center; /* Centra los enlaces */
 }
 
 footer .links h4 {
@@ -407,8 +373,8 @@ footer .social img {
     max-width: 50%;
     height: auto;
 }
-.vpp {
 
+.vpp {
     background-color: var(--color-secundario);
     border: 2px solid var(--color-secundario);
     border-radius: 50px;
@@ -422,10 +388,16 @@ footer .social img {
 
 /* Styling for smaller screens */
 @media (max-width: 768px) {
-    
-.producto {
-width: 80%; /* Adjust width to 80% */        
-margin: 10px auto; /* Center the cards */
-}
+    footer .links {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    }
 
+    .producto {
+        flex: 1 1 100%; /* Los productos ocuparán el 100% del ancho en pantallas pequeñas */
+    }
+
+    .izquierda, .derecha {
+        flex: 1 1 100%; /* Los elementos ocuparán el 100% del ancho en pantallas pequeñas */
+    }
 }
+   

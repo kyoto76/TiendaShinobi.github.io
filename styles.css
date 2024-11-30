@@ -815,3 +815,9 @@ nav ul li a:hover {
     }
 }
 
+h3 {
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-top: 20px;   /* Ajusta el margen superior si es necesario */
+    font-size: 24px;    /* Tamaño de letra (opcional) */
+  }
+

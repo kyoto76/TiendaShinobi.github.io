@@ -9,16 +9,31 @@
 <body>
     
     <header>
-        <img src="image/logo.png" alt="Logo de la veterinaria" class="logo">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="Shinobi Shop Logo" class="logo">
+        </div>
         <nav>
             <ul>
-                <li><a href="#inicio">INICIO</a></li>
-                <li><a href="#productos">PRODUCTOS</a></li>
-                <li><a href="#contacto">CONTACTO</a></li>
+                <li><a href="#inicio" data-categoria="Inicio">INICIO</a></li>
+                <li><a href="#productos" data-categoria="productos">PRODUCTOS</a></li>
+                <li><a href="#contacto" data-categoria="Contacto">CONTACTO</a></li>
             </ul>
         </nav>
+        <button id="nequiButton" class="nequi-button">
+            <i class="fas fa-wallet"></i> Comprar con Nequi
+        </button>
     </header>
 
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Pago con Nequi</h2>
+            <p>Total a pagar: $<span id="totalAmount">50000</span></p>
+            <input type="tel" id="phoneNumber" placeholder="Número de teléfono Nequi" required>
+            <button id="confirmPayment">Confirmar Pago</button>
+        </div>
+    </div>
+    </header>
     <div class="derecha">
         <img src="image/junto.png" alt="Imagen de la veterinaria">
     </div>
@@ -51,7 +66,7 @@
     </section> 
 
 
-    <h2>PRODUCTOS</h2>
+   
     <div class="categorias">
         <button class="categoria" data-categoria="mascotas">VAPER</button>
         <button class="categoria" data-categoria="peluqueria">GORRAS</button>

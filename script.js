@@ -149,5 +149,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-  
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const nequiButton = document.getElementById('nequiButton');
+    const modal = document.getElementById('paymentModal');
+    const closeBtn = document.getElementsByClassName('close')[0];
+    const confirmPaymentBtn = document.getElementById('confirmPayment');
+
+    nequiButton.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    confirmPaymentBtn.addEventListener('click', () => {
+        const message = encodeURIComponent("Hola, aquí está mi comprobante de pago.");
+        const phone = "+573226135530"; // Reemplaza con el número de WhatsApp
+        window.location.href = `https://wa.me/${phone}?text=${message}`;
+    });
+});

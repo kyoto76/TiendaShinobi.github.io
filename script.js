@@ -116,5 +116,38 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const nequiButton = document.getElementById('nequiButton');
+    const modal = document.getElementById('paymentModal');
+    const closeBtn = document.getElementsByClassName('close')[0];
+    const confirmPaymentBtn = document.getElementById('confirmPayment');
+    const phoneNumberInput = document.getElementById('phoneNumber');
+
+    nequiButton.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    confirmPaymentBtn.addEventListener('click', () => {
+        const phoneNumber = phoneNumberInput.value;
+        if (phoneNumber && /^[0-9]{10}$/.test(phoneNumber)) {
+            // Aquí iría la lógica real de integración con Nequi
+            // Por ahora, solo simularemos un pago exitoso
+            alert(`Pago exitoso desde el número ${phoneNumber}. Gracias por su compra!`);
+            modal.style.display = 'none';
+        } else {
+            alert('Por favor, ingrese un número de teléfono válido (10 dígitos).');
+        }
+    });
+});
   
 

@@ -1,816 +1,337 @@
-/* Import the Poppins font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-
-/* Define a color palette */
-:root {
-    --color-primario: #1b1b1b;
-    --color-secundario: #2ecc71;
-    --color-accento: #c05b50;
-    --color-fondo: #ecf0f1;
-    --color-texto: #2c3e50;
-    --primary-color: #ff3366;
-    --secondary-color: #2ecc71;
-    --background-color: #1b1b1b;
-    --text-color: #ffffff;
-}
-
-/* General styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body styling */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    color: var(--text-color);
-    min-height: 100vh;
-    position: relative;
-}
-
-/* Header styling */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(27, 27, 27, 0.9);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    padding: 1rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-container {
-    width: 60px;
-    height: 60px;
-    position: relative;
-    overflow: hidden;
-}
-
-.logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-@keyframes logoFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-10px) rotate(5deg); }
-    75% { transform: translateY(10px) rotate(-5deg); }
-}
-
-@keyframes logoGlow {
-    0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.7)); }
-    50% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.9)); }
-}
-
-.logo.animate {
-    animation: logoFloat 6s ease-in-out infinite, logoGlow 3s ease-in-out infinite;
-}
-
-/* Navigation styling */
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
-
-nav ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-nav ul li a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.4s ease;
-    z-index: -1;
-}
-
-nav ul li a:hover::before {
-    left: 0;
-}
-
-nav ul li a:hover {
-    color: var(--primary-color);
-}
-
-/* Button styling */
-.nequi-button {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.nequi-button:hover {
-    background-color: var(--secondary-color);
-}
-
-/* Menu toggle for mobile */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    margin: 2px 0;
-    transition: 0.4s;
-}
-
-/* Carousel styling */
-.carousel {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    max-width: 1500px;
-    height: auto;
-    margin: 0 auto;
-}
-
-.carousel-container {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    height: 100%;
-}
-
-.carousel-slide {
-    display: flex;
-    width: 100%;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    flex-shrink: 0;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-
-/* Content styling */
-.contenido {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1200px;
-    margin: 20px auto;
-}
-
-.izquierda, .derecha {
-    flex: 1 1 calc(50% - 20px);
-    padding: 10px;
-}
-
-.derecha img {
-    max-width: 100%;
-    height: auto;
-    max-height: 400px;
-    justify-content: center;
-    position: relative;
-}
-
-/* Product styling */
-#productos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-}
-
-.producto {
-    flex: 1 1 calc(33.33% - 20px);
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    background-color: #fff;
-}
-
-.producto:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
-.producto img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.producto h3 {
-    color: var(--color-primario);
-    margin: 0 0 10px;
-}
-
-.producto p {
-    margin: 0 0 5px;
-    color: var(--color-texto);
-}
-
-/* Button styles */
-.boton {
-    background-color: var(--color-primario);
-    border: 2px solid var(--color-primario);
-    border-radius: 50px;
-    color: #fff;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
-    text-decoration: none;
-}
-
-.boton:hover {
-    background-color: var(--color-accento);
-    border-color: var(--color-accento);
-}
-
-.botones {
-    margin-top: 20px;
-    display: flex;
-}
-
-.botones button {
-    margin-right: 10px;
-}
-
-/* Category buttons styling */
-.categorias {
-    text-align: center;
-    margin-top: 5%;
-}
-
-.categoria {
-    background-color: var(--color-secundario);
-    border: 2px solid var(--color-secundario);
-    border-radius: 50px;
-    color: #fff;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
-    margin: 0 10px;
-    text-decoration: none;
-    margin-bottom: 5%;
-}
-
-.categoria:hover {
-    background-color: var(--color-accento);
-    border-color: var(--color-accento);
-}
-
-/* Footer styling */
-footer {
-    background-color: var(--color-primario);
-    padding: 20px 0;
-    color: black;
-    text-align: center;
-}
-
-footer .logo-2 {
-    max-width: 150px;
-    height: auto;
-    display: block;
-    margin: 0 auto 20px;
-}
-
-footer .links {
-    flex-direction: column;
-    align-items: center;
-}
-
-footer .links h4 {
-    margin: 0 0 10px;
-    color: black;
-}
-
-footer .links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-footer .links ul li {
-    margin: 5px 0;
-}
-
-footer .links ul li a {
-    color: black;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer .links ul li a:hover {
-    color: var(--color-accento);
-}
-
-footer .socials {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-footer .social {
-    width: 40px;
-    height: 40px;
-    background-color: rgb(255, 0, 0);
-    border-radius: 50%;
-    margin: 0 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-footer .social img {
-    max-width: 50%;
-    height: auto;
-}
-
-/* Button for WhatsApp */
-.whatsapp-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    width: 50px;
-    height: 50px;
-    background-color: #25D366;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-}
-
-.whatsapp-button img {
-    width: 30px;
-    height: 30px;
-}
-
-/* Button to go to the top */
-#top-button {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    z-index: 1000;
-    width: 50px;
-    height: 50px;
-    background-color: #fd6060;
-    border: none;
-    border-radius: 50%;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    padding: 0;
-}
-
-#top-button img {
-    width: 24px;
-    height: 24px;
-}
-
-/* Modal styling */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1001;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: var(--background-color);
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.modal-content img {
-    max-width: 100%;
-    height: auto;
-    margin: 20px 0;
-}
-
-/* Close button for the modal */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Input styles for modal */
-#phoneNumber {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-/* Confirm payment button */
-#confirmPayment {
-    background-color: var(--nequi-color);
-    color: var(--background-color);
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: block;
-    width: 100%;
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-#confirmPayment:hover {
-    background-color: var(--hover-color);
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 1rem;
-    }
-
-    .logo {
-        margin-bottom: 1rem;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-        margin-bottom: 1rem;
-        display: none; /* Ocultar por defecto */
-    }
-
-    nav ul.show {
-        display: flex; /* Mostrar cuando se active */
-    }
-
-    .menu-toggle {
-        display: flex; /* Mostrar el botón de menú en pantallas pequeñas */
-    }
-
-    .nequi-button {
-        display: none; /* Ocultar el botón en pantallas pequeñas */
-    }
-
-    .izquierda, .derecha {
-        flex: 1 1 100%; /* Hacer que los elementos ocupen el 100% en pantallas pequeñas */
-    }
-
-    #productos {
-        flex-direction: column; /* Colocar productos en columna en pantallas pequeñas */
-    }
-
-    .producto {
-        flex: 1 1 100%; /* Los productos ocuparán el 100% del ancho en pantallas pequeñas */
-    }
-
-    .modal-content {
-        width: 95%;
-        margin: 10% auto;
-    }
-}
-
-/* Gradient Animation */
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Additional styles for smoke background */
-#smoke-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.5; /* Opacidad para el fondo */
-}
-
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-:root {
-  --primary-color: #4a90e2;
-  --secondary-color: #f39c12;
-  --text-color: #333;
-  --background-color: #ffffff;
-  --hover-color: #2c3e50;
-  --nequi-color: #ff3366;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-header {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  padding: 1rem 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  max-height: 60px;
-  transition: transform 0.3s ease;
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-nav ul li a {
-  color: var(--background-color);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-nav ul li a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transition: all 0.4s ease;
-  z-index: -1;
-}
-
-nav ul li a:hover::before {
-  left: 0;
-}
-
-nav ul li a:hover {
-  color: var(--hover-color);
-  background-color: var(--background-color);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
-
-.nequi-button {
-  background-color: var(--nequi-color);
-  color: var(--background-color);
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nequi-button:hover {
-  background-color: var(--background-color);
-  color: var(--nequi-color);
-  box-shadow: 0 0 15px rgba(255, 51, 102, 0.5);
-}
-
-.nequi-button i {
-  font-size: 1.2rem;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1001;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-  background-color: var(--background-color);
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#phoneNumber {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-#confirmPayment {
-  background-color: var(--nequi-color);
-  color: var(--background-color);
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: block;
-  width: 100%;
-  margin-top: 10px;
-}
-
-#confirmPayment:hover {
-  background-color: var(--hover-color);
-}
-
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    padding: 1rem;
-  }
-
-  .logo {
-    margin-bottom: 1rem;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  nav ul li a {
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
-
-  .nequi-button {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .modal-content {
-    width: 95%;
-    margin: 10% auto;
-  }
-}
-
-.logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    animation: float 3s ease-in-out infinite, rotate 6s linear infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Sitio Web</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <header>
+        <div class="logo-container">
+            <img src="image/logo.png" alt="Shinobi Shop Logo" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio" data-categoria="Inicio">INICIO</a></li>
+                <li><a href="#productos" data-categoria="productos">PRODUCTOS</a></li>
+                <li><a href="#contacto" data-categoria="Contacto">CONTACTO</a></li>
+            </ul>
+        </nav>
+        <button id="nequiButton" class="nequi-button">
+            <i class="fas fa-wallet"></i> Comprar con Nequi
+        </button>
+    </header>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Pago con Nequi</h2>
+            <p>Escanea el código QR<span id="totalAmount"></span></p>
+            <img src="image/Sin título.jpg" alt="categoria">
+            <button id="confirmPayment">Enviar Comprobante</button>
+        </div>
+    </div>
+    
+    </div>
+    </header>
+    <div class="derecha">
+        <img src="image/junto.png" alt="Imagen de la veterinaria">
+    </div>
+    <div class="contenido">
+        <div class="izquierda">
+            <h1>Shinobi Shop</h1>
+            <p>Bienvenido a Shinobi Shop , tu tienda especializada donde estilo y autenticidad se encuentran. Nos inspiramos en la cultura urbana y el espíritu ninja para ofrecerte productos únicos que reflejen tu personalidad. Explora nuestra exclusiva selección de lociones con aromas intensos y cautivadores, vapers de alta calidad para una experiencia única, y gorras con diseños modernos y atrevidos. En Shinobi Shop , cada producto está pensado para quienes valoran la esencia, la originalidad y un estilo sin límites.¡Sumérgete en el mundo de Shinobi Shop!</p>
+            <div class="botones">
+                <a class="boton" href="https://wa.link/9jawvl">Contáctanos</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="carousel">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="image/rojo.webp" alt="Descripción de la imagen 1">
+                <img src="image/nueva.jpg" alt="Descripción de la imagen 2">
+                <img src="image/perrfume.jpg" alt="Descripción de la imagen 3">
+                <!-- Añade más imágenes según necesites -->
+            </div>
+        </div>
+        <button class="carousel-btn prev-btn">❮</button>
+        <button class="carousel-btn next-btn">❯</button>
+    </div>
+
+    
+    <section id="producto"> 
+    </section> 
+   
+    <div class="categorias">
+        <button class="categoria" data-categoria="mascotas">VAPER</button>
+        <button class="categoria" data-categoria="peluqueria">GORRAS</button>
+        <button class="categoria" data-categoria="hotel">PERFUMES</button>
+        <a class="categoria" href="vaper/vaper.html">Ver mas
+        </a>    
+  
+</div>
+
+    <div  id="productos">
+        <!-- Aquí se cargarán los productos -->
+        <div class="producto" data-categoria="mascotas">
+            <img src="image/ice.jpg" alt="Producto 1">
+            <h3>WATERMELON ICE SNOWWOLF SMART HD 15K LIMITED</h3>
+            <h3>$55.000</h3>
+          
+
+        </div>
+        <div class="producto" data-categoria="mascotas">
+            <img src="image/blue rice.jpg" alt="Producto 2">
+            <h3>BLUE RAZZ ICE SNOWWOLF SMART HD 15K LIMITED</h3>
+            <h3>$55.000</h3>
+        </div>
+        <div class="producto" data-categoria="mascotas">
+            <img src="image/water.webp" alt="Producto 2">
+            <h3>DOUBLE APPLE SNOWWOLF SMART HD 15K LIMITED</h3>
+       <h3>$55.000</h3>
+        </div>
+    
+        <div class="producto" data-categoria="mascotas">
+            <img src="image/ap.webp" alt="Producto 2">
+            <h3>APPLE GUMMIES SNOWWOLF SMART HD 15K LIMITED</h3>
+        <h3>55.000</h3>
+        </div>
+
+        <div class="producto" data-categoria="mascotas">
+            <img src="image/SOUR-APPLE-ICE.webp" alt="Producto 2">
+            <h3>SOUR APPLE ICE SNOWWOLF SMART HD 15K LIMITED</h3>
+        <h3>55.000</h3>
+        </div>
+
+        
+            
+        
+          
+        <!-- Agrega más productos aquí -->
+
+
+        
+        
+        <div class="producto" data-categoria="peluqueria">
+            <img src="image/gorras.jpg" alt="Producto 3">
+            <h3>Gorro Dior Playero</h3>
+            
+            <p>$120.000 - 130.000</p>
+        </div>
+
+        <div class="producto" data-categoria="peluqueria">
+            <img src="image/guadalupe.jpg" alt="Producto 3">
+            <h3>Virgen de Guadalupe</h3>
+            <p>$120.000 - 130.000</p>
+        </div>
+        
+        <div class="producto" data-categoria="peluqueria">
+            <img src="image/monastery.jpg" alt="Producto 3">
+            <h3>Monastery</h3>
+            <p>$110.000 - 120.000</p>
+        </div>
+
+        <div class="producto" data-categoria="peluqueria">
+            <img src="image/yanke.jpg" alt="Producto 3">
+            <h3>Yankees Roja</h3>
+            <p>$80.000</p>
+        </div>
+
+        <div class="producto" data-categoria="peluqueria">
+            <img src="image/morado.jpg" alt="Producto 3">
+            <h3>Los Angeles Dodgers LA</h3>
+            <p>$80.000 </p>
+        </div>
+
+        <div class="producto" data-categoria="peluqueria">
+            <img src="image/tc.jpg" alt="Producto 3">
+            <h3>Gorra CT</h3>
+            <p>$80.000  </p>
+        </div>
+
+        <div class="producto" data-categoria="peluqueria">
+            <img src="image/blanca.jpg" alt="Producto 3">
+            <h3>Yankees New Era</h3>
+            <p>$100.000</p>
+        </div>
+
+        <div class="producto" data-categoria="peluqueria">
+            <img src="image/chirri.jpg" alt="Producto 3">
+            <h3>5 Colores</h3>
+            <p>$80.000 </p>
+        </div>
+        <!-- Agrega más productos aquí -->
+
+       
+        
+        <div class="producto" data-categoria="hotel">
+            <img src="image/one.jpg" alt="Producto 4">
+            <h3>One Million luky</h3>
+            <p>$140.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/mochino.jpg" alt="Producto 4">
+            <h3>Moschino Toy 2</h3>
+            <p>$150.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/lat.jpg" alt="Producto 4">
+            <h3>Khamrah</h3>
+            <p>$150.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/vul.jpg" alt="Producto 4">
+            <h3>Bvlgari</h3>
+            <p>$120.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/yara.jpg" alt="Producto 4">
+            <h3>YARA</h3>
+            <p>$130.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/ariana.jpg" alt="Producto 4">
+            <h3>Ariana Grande</h3>
+            <p>$150.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/arajdjdjd.jpg" alt="Producto 4">
+            <h3>Amesthys De Lattffa</h3>
+            <p>$160.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/lavida.jpg" alt="Producto 4">
+            <h3>La Vida Es Bella</h3>
+            <p>$140.000</p>
+        </div>
+
+        <div class="producto" data-categoria="hotel">
+            <img src="image/invictus.jpg" alt="Producto 4">
+            <h3>Invictus</h3>
+            <p>$130.000</p>
+        </div>
+
+        <div class="producto" data-categoria="hotel">
+            <img src="image/star.jpg" alt="Producto 4">
+            <h3>Scandal</h3>
+            <p>$160.000</p>
+        </div>
+
+        <div class="producto" data-categoria="hotel">
+            <img src="image/sin nombre.jpg" alt="Producto 4">
+            <h3>Hramain</h3>
+            <p>$210.000</p>
+        </div>
+
+        <div class="producto" data-categoria="hotel">
+            <img src="image/phanpdkofds.jpg" alt="Producto 4">
+            <h3>Phantom</h3>
+            <p>$140.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/vers.jpg" alt="Producto 4">
+            <h3>Versache Eros Flame</h3>
+            <p>$130.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/valenti.jpg" alt="Producto 4">
+            <h3>Valentino In Roma</h3>
+            <p>$145.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/victorini.jpg" alt="Producto 4">
+            <h3>Victorinox</h3>
+            <p>$140.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/phanpdkofds.jpg" alt="Producto 4">
+            <h3>Phantom</h3>
+            <p>$140.000</p>
+        </div>
+        <div class="producto" data-categoria="hotel">
+            <img src="image/vals.jpg" alt="Producto 4">
+            <h3>Pruebas</h3>
+            <p>$35.000-45.000</p>
+        </div>
+     
+
+
+
+        <!-- Agrega más productos aquí -->  
+    </div>
+
+
+
+
+    <div class="seccion">
+        <div class="izquierda">
+        </div>
+        <div class="derecha">
+        </div>
+    </div>
+
+    <!-- Botón de WhatsApp fijo -->
+<a href="https://wa.link/9jawvl" target="_blank" class="whatsapp-button">
+    <img src="image/whatsapp.svg" alt="WhatsApp">
+</a>
+
+<!-- Botón para ir arriba con imagen -->
+<button id="top-button" title="Ir Arriba">
+    <img src="image/arrow-up-circle.svg" alt="Ir Arriba">
+</button>
+
+
+    
+    <section id="contacto"></section>
+
+    <footer class="footer container">
+        <img class="logo-2" src="images/logo.svg" alt="">
+    
+        <div class="links">
+            <h4>Enlace Rápido</h4>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#productos">Servicios</a></li>
+                
+            </ul>
+        </div>
+        
+        <div class="links">
+            <h4>Redes Sociales</h4>
+            <div class="socials">
+                <a href="https://www.facebook.com/profile.php?id=61563497858445" target="_blank" rel="noopener noreferrer">
+                    <div class="social">
+                        <img src="image/s1.svg" alt="Facebook">
+                    </div>
+                </a>
+                
+                <a href="https://wa.link/9jawvl">
+                    <div class="social">
+                        <img src="image/whatsapp.svg" alt="WhatsApp">
+                    </div>
+                </a>
+                
+                <a href="https://www.instagram.com/shinobi_barber_shop/" target="_blank" rel="noopener noreferrer">
+                    <div class="social">
+                        <img src="image/s3.svg" alt="Instagram">
+                    </div>
+                </a>
+                
+               
+            </div>
+        </div>
+        
+    </footer>
+    
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+</body>
+</html>
